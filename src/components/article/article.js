@@ -106,7 +106,9 @@ const data = [
   }
 ];
 
+// make the method
 function articleMaker(articleObj){
+  // create the elements for the method
   const articleWrapper = document.createElement('div')
   const articleTitle = document.createElement('h2')
   const articleDate = document.createElement('p')
@@ -115,10 +117,12 @@ function articleMaker(articleObj){
   const paragraphThree = document.createElement('p')
   const expandButton = document.createElement('span')
 
+  // add classes
   articleWrapper.classList.add('article')
   articleDate.classList.add('date')
   expandButton.classList.add('expandButton')
 
+  //append elements to parent object
   articleWrapper.appendChild(articleTitle)
   articleWrapper.appendChild(articleDate)
   articleWrapper.appendChild(paragraphOne)
@@ -126,6 +130,7 @@ function articleMaker(articleObj){
   articleWrapper.appendChild(paragraphThree)
   articleWrapper.appendChild(expandButton)
 
+  // match the text contents with the methods data argument[articleObj/data]
   articleTitle.textContent = articleObj.title;
   articleDate.textContent = articleObj.date;
   paragraphOne.textContent = articleObj.firstParagraph;
@@ -133,12 +138,14 @@ function articleMaker(articleObj){
   paragraphThree.textContent = articleObj.thirdParagraph;
   expandButton.textContent = '+'
 
+  // Make the click function to expand the article with the premade class
   expandButton.addEventListener('click', () => {
     articleWrapper.classList.toggle('article-open')
   })
   return articleWrapper
 }
 
+// for each article in the data, append the returned articleWrapper to the div with the class of 'articles' in the HTML
 data.forEach(article => {
   document.querySelector('div.articles').appendChild(articleMaker(article))
 })
